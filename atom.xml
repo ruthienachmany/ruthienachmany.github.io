@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2013-06-05T10:40:20-04:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[Ruby Chard]]></title>
+  <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
+  <link href="http://ruthienachmany.github.io/"/>
+  <updated>2013-06-05T11:02:32-04:00</updated>
+  <id>http://ruthienachmany.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Ruthie Nachmany]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[hello]]></title>
-    <link href="http://yoursite.com/blog/2013/06/05/hello/"/>
+    <title type="html"><![CDATA[A Blogging Framework For Hackers]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/05/hello/"/>
     <updated>2013-06-05T10:39:00-04:00</updated>
-    <id>http://yoursite.com/blog/2013/06/05/hello</id>
-    <content type="html"><![CDATA[<p>hi!</p>
+    <id>http://ruthienachmany.github.io/blog/2013/06/05/hello</id>
+    <content type="html"><![CDATA[<h1>hello</h1>
+
+<p>This be my first post</p>
 ]]></content>
   </entry>
   
