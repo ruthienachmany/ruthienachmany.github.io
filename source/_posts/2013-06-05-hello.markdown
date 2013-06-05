@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "hello"
+title: "A Blogging Framework For Hackers"
 date: 2013-06-05 10:39
 comments: true
 categories: 
 ---
 
-hi!
+#hello#
+
+This be my first post

@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://ruthienachmany.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Ruby Chard
+subtitle: Internet Swiss Army Chard
+author: Ruthie Nachmany
 simple_search: http://google.com/search
-description:
+description: A Blog By Ruthie Nachmany
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
