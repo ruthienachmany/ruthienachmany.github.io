@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Chard]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-06-12T19:47:14-04:00</updated>
+  <updated>2013-06-12T20:00:07-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[roo]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/roo/"/>
+    <updated>2013-06-12T19:54:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/roo</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[hello world]]></title>
