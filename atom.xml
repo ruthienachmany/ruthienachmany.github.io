@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Chard]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-06-12T20:10:21-04:00</updated>
+  <updated>2013-06-12T20:35:49-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -14,7 +14,34 @@
 
   
   <entry>
-    <title type="html"><![CDATA[roo]]></title>
+    <title type="html"><![CDATA[Our Speakers]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/our-speakers/"/>
+    <updated>2013-06-12T20:15:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/our-speakers</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[First Nine Days]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/first-nine-days/"/>
+    <updated>2013-06-12T20:14:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/first-nine-days</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Collage]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/collage/"/>
+    <updated>2013-06-12T20:14:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/collage</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GUI]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/06/12/roo/"/>
     <updated>2013-06-12T19:54:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/06/12/roo</id>
@@ -32,7 +59,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[hiiii]]></title>
+    <title type="html"><![CDATA[Language]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/06/09/hiiii/"/>
     <updated>2013-06-09T13:39:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/06/09/hiiii</id>
