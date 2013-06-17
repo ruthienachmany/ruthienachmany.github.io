@@ -1,24 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Ruby Chard]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-06-16T23:34:56-04:00</updated>
+  <updated>2013-06-17T18:24:32-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Ruthie Nachmany]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[hello]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/06/16/hello/"/>
-    <updated>2013-06-16T23:34:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/06/16/hello</id>
-    <content type="html"><![CDATA[<p>testing</p>
+    <title type="html"><![CDATA[hello world]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/16/hello-world/"/>
+    <updated>2013-06-16T23:28:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/16/hello-world</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[write code everyday]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/13/write-code-everyday/"/>
+    <updated>2013-06-13T07:50:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/13/write-code-everyday</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fractals]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/13/being-special/"/>
+    <updated>2013-06-13T07:36:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/13/being-special</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[creativity and structure]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/13/creativity-and-structure/"/>
+    <updated>2013-06-13T00:58:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/13/creativity-and-structure</id>
+    <content type="html"><![CDATA[<p>hey
+GUI
+GUYS</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mediumsyouthinkin]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/13/mediumsyouthinkin/"/>
+    <updated>2013-06-13T00:23:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/13/mediumsyouthinkin</id>
+    <content type="html"><![CDATA[<p>text editor</p>
+
+<p>testing</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Our Speakers]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/our-speakers/"/>
+    <updated>2013-06-12T20:15:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/our-speakers</id>
+    <content type="html"><![CDATA[<p>Gwen Bell</p>
+
+<p>Matt Hackett</p>
+
+<p>Jeff Casimir</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[First Nine Days]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/first-nine-days/"/>
+    <updated>2013-06-12T20:14:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/first-nine-days</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Collage]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/collage/"/>
+    <updated>2013-06-12T20:14:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/collage</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GUI]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/12/roo/"/>
+    <updated>2013-06-12T19:54:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/12/roo</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Practice Being Bad at Things]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/09/hello-world/"/>
+    <updated>2013-06-09T16:19:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/09/hello-world</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Language]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/09/hiiii/"/>
+    <updated>2013-06-09T13:39:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/09/hiiii</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Write Code Everyday]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/05/ruby-chard-images/"/>
+    <updated>2013-06-05T11:05:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/05/ruby-chard-images</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Abstraction]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/05/hello/"/>
+    <updated>2013-06-05T10:39:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/05/hello</id>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
