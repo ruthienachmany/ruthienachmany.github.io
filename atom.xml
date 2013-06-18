@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby Chard]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-06-18T07:17:28-04:00</updated>
+  <updated>2013-06-18T08:02:46-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -25,6 +25,28 @@
 <p>This all reminds me of some cool things that have been happening as I learn to program. I keep remembering all these other things that I&rsquo;ve heard of in the past that now I start to wonder what they really mean, and start to be able to contextualize that in a larger picture. I think that&rsquo;s part of the reason why I&rsquo;ve been so excited to talk about coding at parties, no joke. Everything starts to have new meaning and context.</p>
 
 <p>I&rsquo;m going to start tracking the new things that I learn, and the paths they lead down. Starting with Mongo&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CitiBike Project: 'What is...' No. 1]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/18/what-is-dot-dot-dot/"/>
+    <updated>2013-06-18T07:18:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/18/what-is-dot-dot-dot</id>
+    <content type="html"><![CDATA[<p>What is MongoDB?
+MongoDB is an open source document-oriented system developed and supported by 10gen. It&rsquo;s part of the NoSQL movement. As opposed to SQL, a relational databses, it structures data in JSON-like documents with dynamic schemas called BSONs. This can make MongoDB faster than SQL. At the same time, most people who use MongoDB used SQL for many years first, which I think is important to note. MTV, Craigslist, and Foursquare use MongoDB.</p>
+
+<p>What is Mongoid?
+Mongoid is an Object-Document-Mapper (ODM) for MongoDB, written in Ruby. It provides a familiar API to Ruby developers who have been using Active Record or Data Mapper, while leveraging MongoDB&rsquo;s schemaless document-based design, dynamic queries, and atomic modifier operations. (NOTE TO SELF: figure out what are atomic modifier operations)</p>
+
+<p>What is JSON?
+JSON is JavaScript Object Notation. It&rsquo;s a text-based open standard for human-readable data interchange, built on a collection of key-value pairs and arrays.  It comes from JavaScript objects, which represent simple data structures and associative arrays. Interestingly, though it references JavaScript, it is language-independent.</p>
+
+<p>What is Active Record?
+Active Record is a way to query databases in a SQL-like way in Rails without actually having to write SQL. It&rsquo;s compatible with MySWL, PostgreSQL, SQLite, and others.</p>
+
+<p>DataMapper:
+DataMapper is an Object-Relational-Mapper (ORM) for Ruby. It&rsquo;s  fast, thread-safe and feature rich. It differentiates itself by having one API for a variety of datastores, the ability to develop a data-store independently of models using Migrations (NOTE: figure out what this means), and helpful when querying or supporting data-stores you don&rsquo;t manage yourself, such as legacy databases.</p>
 ]]></content>
   </entry>
   
