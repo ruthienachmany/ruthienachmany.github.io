@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-06-24T09:20:00-04:00</updated>
+  <updated>2013-07-24T17:43:48-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[chris hi]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/24/chris-hi/"/>
+    <updated>2013-07-24T17:43:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/24/chris-hi</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[example]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/22/example/"/>
+    <updated>2013-07-22T18:04:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/22/example</id>
+    <content type="html"><![CDATA[<p>hi</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[hi]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/22/hi/"/>
+    <updated>2013-07-22T17:26:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/22/hi</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mapping]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/22/mapping/"/>
+    <updated>2013-07-22T12:50:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/22/mapping</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA['Preparing for my first tech talk']]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/10/preparing-for-my-first-tech-talk/"/>
+    <updated>2013-07-10T20:43:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/10/preparing-for-my-first-tech-talk</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m giving my first tech talk tonight, at the NYC on Rails meetup at the Flatiron School. Preparing for this was an exciting and challenging process as a beginner. Some lessons below:</p>
+
+<p>Positioning:
+As a beginner, there&rsquo;s a good chance you know less about programming than anyone you&rsquo;re speaking to. In life, I think it&rsquo;s always important to find the place where you come at a situation from a position of advantage instead of limitation. The beginner has the unique perspective of&hellip; a beginner. No one who is not a beginner can access that process of problem-solving in a totally new and unfamiliar field that the beginner can. So the beginner&rsquo;s role is to be as expressive as possible about how they build pathways from one concept to another. Presenting this can be helpful for a more experienced audience in several ways. First, it&rsquo;s a reality check for whether someone listening to the presentation understand the concept well enough to be able to present it to the beginner. Second, when learning a great deal rapidly and working on a range of projects, it is easy to forget some of the initial questions that challenged or drove you at the initial phase. Listening to the beginner might help recall or clarify some early motivation for the audience. In sum, it&rsquo;s important as a beginner to use this position as effectively as possible, both for oneself and for one&rsquo;s audience, as a community-building and self-reflective exercise.</p>
+
+<p>Purpose:
+After going in several directions about what I should present, I realized that the most important thing for me right now would be to establish strong fundamentals of understanding of Rails. It&rsquo;s key to think what you want to learn from giving your presentation. Not only is this the most productive use of your time (and as a beginner it seems like there&rsquo;s not enough time to read half the documentation or do half the problems or assignments you want to do), but it also means that you now have a stake in the presentation, which makes it more interesting for your viewers.</p>
+
+<p>Problem-Solving:
+After several mistaken paths for this presentation&rsquo;s topic (think: analyzing trends in Ruby gems, trees of New York rails app, interactive Ulysses, etc), I consulted with my father about how to approach this talk. He suggested that I focus on a problem I had and how I worked through it. That&rsquo;s why tonight I&rsquo;m going to speak on conceptualizing Rails after Sinatra. Pinning down one&rsquo;s problem to present is also tough as a beginner. At first, I felt pretty shaky about Rails, and felt a little nervous to present a problem I didn&rsquo;t feel too resolved about. Now I think I understand it a little bit better, but then I ask myself whether it&rsquo;s worth it at all to present about this challenge if everyone else in the room understands Rails pretty well. When learning so much so fast, this is bound to come up. Starting out, you might not want to return so fast to that feeling of not understanding. But being able to pin down this process is useful not only for the talk, but for a resource to draw upon when facing more complex challenges in code in the future.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Beautiful Code for Beginners]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/10/beautiful-code-for-beginners/"/>
+    <updated>2013-07-10T20:40:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/10/beautiful-code-for-beginners</id>
+    <content type="html"><![CDATA[<p>Last Wednesday, we saw a presentation on beautiful code by Marcel Molina from RubyConf &lsquo;07. It was a very interesting talk, and I was excited to start being exposed to the world of &#8216;beautiful code,&rsquo; which I&rsquo;ve heard a lot about. Yet as we watched it, I found myself asking what the role of &lsquo;beautiful code&rsquo; is for beginners. Why, if at all, is it important to think about? What can we derive from it as fledgling programmers?</p>
+
+<p> Molina began by looking at Greek philosophical and artistic explorations of the concept of beauty. For the Greeks, from art to religious expression, beauty was a matter of proportion. When things were beautiful, they were good and goodness was beauty in action. One can think of Greek temples as a manifestation of this relationship between religion, creative expression, and mathematical proportion.</p>
+
+<p> Molina takes this idea of ratio and proportion to the world of one&rsquo;s code. He discusses three objectives: proportion, integrity, and clarity. Code should not be too much of one of these three traits, but rather should balance between them. Each section should be responsible for and proportional to its role.</p>
+
+<p>This raises interesting conceptual questions about code, and how it fits into a larger expressive tradition. Who is beautiful code for? The programmer? The user? Both? Is this just a mechanism to help the coder feel a more tangible connection to a larger narrative?</p>
+
+<p>Furthermore, as a beginner, I asked myself what this should mean to me, if anything?</p>
+
+<p>First, I think that beginners can and should be driven by the constant strive towards more integral proportion. It seems to me that Molina thinks not that we should not strive to a certain &lsquo;golden ratio,&rsquo; but driven by the concept of ratio in general. As beginners move from single-unit to more complex code, having a sense of what the role of each part should be will create a better and more versatile product.</p>
+
+<p>Second, for beginners, who have been spending most of their lives until now doing things besides coding, thinking about code in these untraditional terms of beauty and goodness can invoke references to other parts of the beginners life, and start to create pathways for leveraging how they have sought to create clarity, proportion, and integrity in those areas to their coding process. Furthermore, it can clarify alternative solutions when one is stuck thinking in a certain way about a problem.</p>
+
+<p>Third, I think we&rsquo;re all taking part in larger projects of structured creative expression as individuals and communities. Being able to link code to this, and this to code, should hopefully be useful on both a conceptual and functional level, helping beginners get to where they want to go in terms of a contributing and learning environment.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[more ideas]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/06/30/understandingpost/"/>
+    <updated>2013-06-30T16:40:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/06/30/understandingpost</id>
+    <content type="html"><![CDATA[<p>ruby documentation project
+writing a better readme</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Graphical User Interfaces]]></title>
