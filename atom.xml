@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-07-24T17:43:48-04:00</updated>
+  <updated>2013-07-25T06:07:27-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -14,37 +14,37 @@
 
   
   <entry>
-    <title type="html"><![CDATA[chris hi]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/07/24/chris-hi/"/>
-    <updated>2013-07-24T17:43:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/07/24/chris-hi</id>
+    <title type="html"><![CDATA[Why didn't my Octopress Work?]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/25/why-didnt-my-octopress-work/"/>
+    <updated>2013-07-25T06:07:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/25/why-didnt-my-octopress-work</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[example]]></title>
+    <title type="html"><![CDATA[Github Parsing: Getting close up with events, payloads, and commit messages]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/07/23/mapping/"/>
+    <updated>2013-07-23T12:50:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/07/23/mapping</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Slides from my Presentation]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/07/22/example/"/>
     <updated>2013-07-22T18:04:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/07/22/example</id>
-    <content type="html"><![CDATA[<p>hi</p>
+    <content type="html"><![CDATA[<p>Slides from my talk about conceptualizing Rails after Sinatra (after one week of Rails) below:</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[hi]]></title>
+    <title type="html"><![CDATA[So Many Resources...]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/07/22/hi/"/>
     <updated>2013-07-22T17:26:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/07/22/hi</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[mapping]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/07/22/mapping/"/>
-    <updated>2013-07-22T12:50:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/07/22/mapping</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
@@ -87,16 +87,6 @@ After several mistaken paths for this presentation&rsquo;s topic (think: analyzi
 <p>Second, for beginners, who have been spending most of their lives until now doing things besides coding, thinking about code in these untraditional terms of beauty and goodness can invoke references to other parts of the beginners life, and start to create pathways for leveraging how they have sought to create clarity, proportion, and integrity in those areas to their coding process. Furthermore, it can clarify alternative solutions when one is stuck thinking in a certain way about a problem.</p>
 
 <p>Third, I think we&rsquo;re all taking part in larger projects of structured creative expression as individuals and communities. Being able to link code to this, and this to code, should hopefully be useful on both a conceptual and functional level, helping beginners get to where they want to go in terms of a contributing and learning environment.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[more ideas]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/06/30/understandingpost/"/>
-    <updated>2013-06-30T16:40:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/06/30/understandingpost</id>
-    <content type="html"><![CDATA[<p>ruby documentation project
-writing a better readme</p>
 ]]></content>
   </entry>
   
@@ -232,29 +222,6 @@ DataMapper is an Object-Relational-Mapper (ORM) for Ruby. It&rsquo;s  fast, thre
 10 hours, 1 side project. I think it&rsquo;s going to be about Citibike. I just cloned so many Citibike repos&hellip; and perhaps it will inspire me to learn how to ride a bike. Practice being a beginner&hellip;</p>
 
 <p>More to come.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ideas for Future Posts]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/06/09/hello-world/"/>
-    <updated>2013-06-09T16:19:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/06/09/hello-world</id>
-    <content type="html"><![CDATA[<p>Abstraction</p>
-
-<p>Practice Failure</p>
-
-<p>Our Speakers</p>
-
-<p>Fractal Learning Process of the Flatiron School</p>
-
-<p>Test Driven Development</p>
-
-<p>Mediums You Think In (text editor, etc)</p>
-
-<p>Write Code Everyday</p>
-
-<p>Reading Code Well</p>
 ]]></content>
   </entry>
   
