@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-07-25T06:09:48-04:00</updated>
+  <updated>2013-07-25T06:24:23-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -46,6 +46,14 @@
     <updated>2013-07-22T18:04:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/07/22/example</id>
     <content type="html"><![CDATA[<p>Slides from my talk about conceptualizing Rails after Sinatra (after one week of Rails) below:</p>
+
+<script async="true" class="speakerdeck-embed" data-id="ID" src="http://ruthienachmany.github.io//speakerdeck.com/assets/embed.js"> </script>
+
+
+
+
+<script async class="speakerdeck-embed" data-id="49e4a660d74101303b250ade81771009" data-ratio="1.33333333333333" src="http://ruthienachmany.github.io//speakerdeck.com/assets/embed.js"></script>
+
 ]]></content>
   </entry>
   
