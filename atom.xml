@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-08-10T13:46:45-04:00</updated>
+  <updated>2013-08-10T13:48:13-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -14,20 +14,20 @@
 
   
   <entry>
+    <title type="html"><![CDATA[sidekiq redis cron jobs]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/08/10/sidekiq-redis-cron-jobs/"/>
+    <updated>2013-08-10T13:47:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/08/10/sidekiq-redis-cron-jobs</id>
+    <content type="html"><![CDATA[<p>Sidekiq, redis, cron jobs using whenever</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[jawbone hackathon]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/08/10/jawbone-hackathon/"/>
     <updated>2013-08-10T13:45:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/08/10/jawbone-hackathon</id>
     <content type="html"><![CDATA[<p>Jawbone Hackathon</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[sidekiq + redis]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/08/09/sidekiq/"/>
-    <updated>2013-08-09T13:45:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/08/09/sidekiq</id>
-    <content type="html"><![CDATA[<p>Sidekiq + Redis</p>
 ]]></content>
   </entry>
   
@@ -55,7 +55,7 @@
 <p>My TA Ashley provided a helpful way to specify versions:
 rvm use ruby-1.9.3-p429
 rvm gemset create rails3.2.13
-rvm <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x72;&#117;&#98;&#121;&#x2d;&#49;&#46;&#x39;&#46;&#51;&#x2d;&#x70;&#x34;&#50;&#x39;&#64;&#x72;&#x61;&#105;&#108;&#x73;&#x33;&#x2e;&#50;&#x2e;&#x31;&#51;">&#x72;&#x75;&#98;&#121;&#45;&#49;&#46;&#57;&#x2e;&#51;&#45;&#112;&#x34;&#50;&#57;&#64;&#x72;&#97;&#x69;&#108;&#x73;&#x33;&#46;&#50;&#46;&#x31;&#x33;</a>
+rvm <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#114;&#117;&#x62;&#121;&#x2d;&#x31;&#46;&#x39;&#x2e;&#x33;&#45;&#112;&#x34;&#x32;&#x39;&#x40;&#114;&#x61;&#105;&#x6c;&#115;&#51;&#46;&#50;&#x2e;&#x31;&#51;">&#114;&#117;&#x62;&#121;&#45;&#x31;&#x2e;&#57;&#x2e;&#51;&#45;&#112;&#x34;&#50;&#57;&#64;&#x72;&#97;&#x69;&#108;&#115;&#51;&#46;&#50;&#46;&#x31;&#51;</a>
 gem install rails &mdash;version=3.2.13</p>
 
 <p>But I kind of prefer my classmate Kirin&rsquo;s (<a href="http://kirinm1.github.io/">http://kirinm1.github.io/</a>) approach, just for its simplicity:
