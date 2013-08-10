@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-07-26T09:48:03-04:00</updated>
+  <updated>2013-08-10T13:46:07-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[jawbone hackathon]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/08/10/jawbone-hackathon/"/>
+    <updated>2013-08-10T13:45:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/08/10/jawbone-hackathon</id>
+    <content type="html"><![CDATA[<p>Jawbone Hackathon</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[jawbone hackathon]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/08/09/sidekiq/"/>
+    <updated>2013-08-09T13:45:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/08/09/sidekiq</id>
+    <content type="html"><![CDATA[<p>Sidekiq + Redis</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why didn't my Octopress Work?]]></title>
@@ -37,7 +55,7 @@
 <p>My TA Ashley provided a helpful way to specify versions:
 rvm use ruby-1.9.3-p429
 rvm gemset create rails3.2.13
-rvm <a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#114;&#x75;&#98;&#121;&#x2d;&#x31;&#x2e;&#x39;&#x2e;&#51;&#45;&#x70;&#52;&#50;&#x39;&#x40;&#x72;&#x61;&#105;&#x6c;&#x73;&#x33;&#46;&#x32;&#46;&#49;&#51;">&#x72;&#117;&#x62;&#x79;&#45;&#x31;&#x2e;&#x39;&#46;&#x33;&#45;&#112;&#52;&#50;&#57;&#x40;&#x72;&#97;&#x69;&#108;&#x73;&#51;&#x2e;&#50;&#x2e;&#49;&#51;</a>
+rvm <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x72;&#117;&#x62;&#x79;&#x2d;&#49;&#46;&#57;&#46;&#51;&#45;&#x70;&#52;&#50;&#57;&#x40;&#114;&#97;&#x69;&#x6c;&#x73;&#x33;&#x2e;&#50;&#x2e;&#x31;&#x33;">&#x72;&#117;&#x62;&#121;&#x2d;&#49;&#x2e;&#57;&#x2e;&#x33;&#45;&#x70;&#52;&#x32;&#57;&#x40;&#x72;&#97;&#x69;&#x6c;&#115;&#51;&#46;&#x32;&#x2e;&#x31;&#51;</a>
 gem install rails &mdash;version=3.2.13</p>
 
 <p>But I kind of prefer my classmate Kirin&rsquo;s (<a href="http://kirinm1.github.io/">http://kirinm1.github.io/</a>) approach, just for its simplicity:
