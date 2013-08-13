@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>sidekiq redis cron jobs  | Code as Collage</title>
+	<title>Setting up Sidekiq with Cron Jobs  | Code as Collage</title>
 
 <meta name="author" content="Ruthie Nachmany"> 
 
@@ -95,8 +95,181 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Sidekiq Redis Cron Jobs</h2>
-	<div class="entry-content"><p>Sidekiq, redis, cron jobs using whenever</p>
+	<h2 class="title">Setting Up Sidekiq With Cron Jobs</h2>
+	<div class="entry-content"><p><strong>Setting up Sidekiq with Cron Jobs</strong></p>
+
+<p>For our final projects for the Flatiron School, we broke up into groups and developed web applications that related in some way to the Flatiron School. Groups made web applications to help potential students apply to Flatiron, a CRM program to help potential employers connect to students, a new and improved version of Piazza (the Blackboard-like class website we use). You can see all these projects and more at our <a href="http://info.flatironschool.com/science-002-fair-rsvp-1/2">Science Fair</a> on Thursday, August 13.</p>
+
+<p>My group worked on Teamline, a digital storytelling app that aggregate, filter, and display student-generated data sources. This included implementing multi-provider authorization using Omniauth; collecting and parsing user data from the GitHub, Twitter, and Feedzirra APIs, creating cron jobs to regularly pull data using the Whenever gem, and setting up asynchronous background processing to perform those jobs using Sidekiq and Redis.</p>
+
+<p>That last one is what I want to talk about here. My classmate <a href="mschmaus201.github.io">Matt Schmaus</a> asked me for advice about how to implement regular scraping of high-volume data sources, and I suggested that he take the same approach I did (described below).</p>
+
+<p>My challenge here was to regularly pull data from Twitter and perform it in the background, so that&rsquo;s why the Twitter domain comes into play in this code, and why I chose to use cron jobs with background processing.</p>
+
+<p><strong>Creating Cron Jobs Using Whenever</strong></p>
+
+<p>First I needed to set up a regular time for my site to go and check whether there were new tweets by students whose feeds we were parsing. To do this, I set up a cron job. Learn more about these in [Railscast #164] (<a href="http://railscasts.com/episodes/164-cron-in-ruby">http://railscasts.com/episodes/164-cron-in-ruby</a>).</p>
+
+<p>Cron jobs generally look something like this:</p>
+
+<p><code>1 0 * * *  printf &gt; /var/log/apache/error_log</code></p>
+
+<p><code>0 */2 * * *  /home/username/test.pl</code></p>
+
+<p>or in other words, clear the error log at 12:01AM each day and run the test every 2 hours (thank you <a href="http://en.wikipedia.org/wiki/Cron">Wikipedia</a>).</p>
+
+<p>Luckily in Ruby, we have a gem that can do that for you. I used <a href="https://github.com/javan/whenever">Whenever</a>. Whenever provides a Ruby syntax for cron jobs, as a Ruby-like semantic clarity.</p>
+
+<p><strong>To Use Whenever:<br></strong>
+* 1. Add gem &lsquo;whenever&rsquo; to your Gemfile
+<code>gem 'whenever', :require =&gt; false</code> <br>
+* 2. Bundle <br>
+* 3. Cd into your app in the terminal and then use the command <code>$ wheneverize .</code> to create a schedule.rb file in your Config folder <br>
+* 4. Customize your schedule.rb file to perform the cron jobs you want <br></p>
+
+<p>Here&rsquo;s the one I used:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>every 1.minute do
+</span><span class='line'>  rake "import_tweets:tweets"
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty syntactical, every 1 minute, do this rake task.</p>
+
+<p>That brings us to my rake task.</p>
+
+<p><strong> Creating a Custom Rake Task That Calls A Sidekiq Worker</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require 'twitter'
+</span><span class='line'>require_relative '../../app/workers/tweet_scrape_worker'
+</span><span class='line'> 
+</span><span class='line'>namespace :import_tweets do
+</span><span class='line'> 
+</span><span class='line'>  task :tweets =&gt; :environment do
+</span><span class='line'> 
+</span><span class='line'>    Student.all.each do |student|
+</span><span class='line'>      TweetScrapeWorker.perform_async(student.id)
+</span><span class='line'>      sleep 1
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What I&rsquo;ve done here is create my own custom rake task, which is actually pretty easy. Beginner Rails developers are familiar with rake tasks such as rake db:migrate. You can set up your own namespaces (db in this case) and tasks (migrate in this case). You namespace your task, as I&rsquo;ve done when writing <code>namespace :import_tweets do</code>, and then you create a task by writing inside that do <code>task :tweets =&gt; :environment do</code>. Then, for this specific use case, I&rsquo;ve gone through each student in our Student class, and on each, called the TweetScrapeWorker (more on that in a moment) to &ldquo;perform_async&rdquo; on that student, passing in the student&rsquo;s id. You&rsquo;ll see that I&rsquo;ve also included <code>sleep 1</code>.</p>
+
+<p>So what does this all mean?</p>
+
+<ul>
+<li>Starting with the most last part of this code, I&rsquo;ve included <code>sleep 1</code> as a way to create a pause in between the Rake tasks, so we don&rsquo;t face Twitter rate limits when polling the site.</li>
+<li><code>import_tweets</code> and <code>task: tweets</code> is pretty straightforward. It&rsquo;s just a way for me to call <code>$ rake import_tweets:tweets</code> in my terminal to perform this task on my app</li>
+<li><code>TweetScrapeWorker.perform_async(student.id)</code> &ndash; this is a bit more complex. It leads me to my next tool, Sidekiq&hellip;</li>
+</ul>
+
+
+<p><strong> Sidekiq </strong></p>
+
+<p><a href="https://github.com/mperham/sidekiq">Sidekiq</a> is efficient background processing for Ruby. Learn more about it in <a href="http://railscasts.com/episodes/366-sidekiq">Railscast #366</a>. There&rsquo;s several steps involved in setting up Sidekiq, and I would highly recommend watching the Railscast over and over again until you understand the concept and execution. One note for beginners is not to get too lost (right now) in the last part of this episode, where Ryan Bates talks about multithreading, concurrency, and thread safety. This is important and iteresting stuff, but perhaps not your top priority when you&rsquo;re just starting out. Also note that I was also able to set this up without using <a href="https://github.com/celluloid/celluloid">Celluloid</a>, which provides a Ruby-esque object-oriented way of creating concurrency in Ruby.</p>
+
+<p>So, going back to my code, the first thing you see after the rake task is set up is that I&rsquo;ve called a method called &ldquo;perform_async&rdquo; on a &ldquo;TweetScrapeWorker&rdquo;. In Sidekiq, you set up workers to do different jobs for you, and then send those jobs to a queue, so that when the workers are not busy, they can do your job as part of this background process. So, after including the &lsquo;Sidekiq&rsquo; gem and the dependencies described in the Railscast, you&rsquo;ll also want to create a folder in your app directory called &ldquo;workers&rdquo;, where you can save your workers. I&rsquo;ll go through that model in a moment. You call &ldquo;perform_async&rdquo; (a Sidekiq convention) to send your jobs to the Sidekiq queue.</p>
+
+<p>You&rsquo;ll also note that I&rsquo;ve passed in &ldquo;student.id&rdquo;. This relates to the server I&rsquo;m using to do the background jobs, which is Redis. Redis is a database server. The way it is structured means that you should pass in &lsquo;serialized&rsquo; data like the id of a student object, versus the whole object. To install Redis, use <code>brew install redis</code> and then start it up in your terminal using this command: <code>$ redis-server /usr/local/etc/redis.conf</code>.</p>
+
+<p>That sums up the code I&rsquo;ve written in my rake task, so now let&rsquo;s go to what&rsquo;s being called in my worker class.</p>
+
+<p><strong> Worker Class </strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class TweetScrapeWorker
+</span><span class='line'>  include Sidekiq::Worker
+</span><span class='line'>  
+</span><span class='line'>  def perform(student_id)
+</span><span class='line'>    student = Student.find(student_id)
+</span><span class='line'>    TweetScraper.new(student).scrape_feed
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;ve created a camelcased class that ends with &ldquo;worker&rdquo; to follow Sidekiq worker class conventions. Then I&rsquo;ve included the Sidekiq::Worker module, which allows this class to inherit the Sidekiq functionality. As part of this convention, I&rsquo;ve created a perform method (which Sidekiq looks for), passed in the student id, and then called the TweetScraper model I&rsquo;ve set up in my models directory to do my tweet scraping, creating a new instance and passing in a student, and then calling the scrape feed method on that instance. All you really need to understand here as a beginner are what are the conventions you inherit from Sidekiq.</p>
+
+<p><strong> My Tweet Scraper Model </strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class TweetScraper
+</span><span class='line'>attr_accessor :student
+</span><span class='line'> 
+</span><span class='line'>  def initialize(student)
+</span><span class='line'>    @student = student
+</span><span class='line'>  end
+</span><span class='line'> 
+</span><span class='line'>  def scrape_feed
+</span><span class='line'>      Twitter.user_timeline(student.twitter_handle, options = {:count =&gt; 200}).each do |tweet|
+</span><span class='line'> 
+</span><span class='line'>        if Tweet.where(:tweet_id =&gt; tweet.id).empty?
+</span><span class='line'>          tweet_post = Tweet.new
+</span><span class='line'>          tweet_post.student_id = student.id
+</span><span class='line'>          tweet_post.tweet_id = tweet.id
+</span><span class='line'>          tweet_post.tweet_content = tweet.text
+</span><span class='line'>          tweet_post.tweet_published_at = tweet.created_at    
+</span><span class='line'>          tweet_post.profile_image_url = tweet.profile_image_url
+</span><span class='line'>          tweet_post.save!
+</span><span class='line'> 
+</span><span class='line'>        end
+</span><span class='line'>      end
+</span><span class='line'>   end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the easy part. I make calls to the Twitter API (which I&rsquo;ve authenticated with using Omniauth elsewhere) using the <a href="https://github.com/sferik/twitter">Twitter gem</a> to get tweets, and meta-content about them. One thing you might note if you are new to scraping is how I&rsquo;ve set it up so that if a tweet has been scraped before, my program will recognize its unique id, and not scrape it each time. With high-volume scraping, this is pretty important.  And don&rsquo;t forget to <code>tweet_post.save!</code></p>
+
+<p><strong> The End </strong></p>
+
+<br>And in this way, you can create cron jobs easily in Ruby using whenever, and perform them regularly in the background using Sidekiq with Redis. Happy scraping Matt (and others)! Please post in the comments if you have any questions or if there&#8217;s anything I can clear up.
+
 </div>
 
 

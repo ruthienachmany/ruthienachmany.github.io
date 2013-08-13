@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>jawbone hackathon  | Code as Collage</title>
+	<title>Setting Up Custom Git Hooks  | Code as Collage</title>
 
 <meta name="author" content="Ruthie Nachmany"> 
 
@@ -95,8 +95,61 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Jawbone Hackathon</h2>
-	<div class="entry-content"><p>Jawbone Hackathon</p>
+	<h2 class="title">Setting Up Custom Git Hooks</h2>
+	<div class="entry-content"><p><strong>Ten Steps to Custom Git Hooks</strong></p>
+
+<p>This past weekend, I participated (along with Flatiron students <a href="http://awaxman11.github.io/">Adam Waxman</a>, <a href="http://blog.manaster.com/">David Manaster</a>, <a href="http://maxjacobson.github.io/">Max Jacobson</a>, and <a href="sarahduve.github.io">Sarah Duve</a>) in a hackathon sponsored by Jawbone, Tumblr, the Clinton Foundation, and Ace Hotel. It was an awesome event where we worked with the soon-to-be-public Jawbone API to create hacks that encourage healthy behavior using sleep data from the Jawbone UP bands, as a way to create behavioral change around social determinants of chronic illness (in this case sleep).</p>
+
+<p>I&rsquo;ll write more in depth about this hackathon later, and about the project Sarah, Max, and I created, where we wrote a custom pre-commit git hook which allows or blocks commits to a project based on a threshold of user sleep data parsed form the Jawbone UP API. However, I wanted to describe how to make custom git hooks in this post, as a fun little hack that can also provide more powerful functionalities (such as not allowing people to commit their code if they haven&rsquo;t slept enough) based on how you design it.</p>
+
+<p>Before I start, I wanted to describe a little more about a hook and why they are cool and important. In programming, there is a concept of hooking into a certain moment in time in your program. A common one that Ruby developers might be familiar with is the <code>initialize</code> method, which allows you to hook into the moment in time when a new instance of a class is created and set certain attributes, or set other programs in motion.</p>
+
+<p>Git also has hooks, and I&rsquo;m going to describe here how you can set them yourself.</p>
+
+<p><strong>Step 1</strong></p>
+
+<p>Create a new directory by running <code>$ mkdir wellthisisfun</code> or whatever you want to call it</p>
+
+<p><strong>Step 2</strong></p>
+
+<p>Set it up as a git repo by calling <code>git init</code> in your directory.</p>
+
+<p><strong>Step 3</strong></p>
+
+<p>Here you could push the repo up to github, but it&rsquo;s not necessary to create a git hook. What you do need to do is cd into .git by doing <code>.git</code>. You won&rsquo;t see it when you call <code>ls</code> on your directory, because it&rsquo;s a dotfile, which means it&rsquo;s hidden. However, after you initalize a git repo (step 2), it&rsquo;s there in your directory, whether or not it&rsquo;s on github.</p>
+
+<p><strong>Step 4</strong></p>
+
+<p>You can <code>ls</code> your .git directory. You&rsquo;ll see some interesting stuff that&rsquo;s fun to explore here, such as <code>config</code>, <code>HEAD</code>, <code>info</code>, and <code>objects</code>. If nothing else, it&rsquo;s an interesting way to start learning more about what git is and how it works. In this step, we want to get into the hook folder by calling <code>$ cd hooks</code></p>
+
+<p><strong>Step 5</strong></p>
+
+<p>Open up your hooks. I&rsquo;d suggest using Sublime here, so you can do something like <code>$ subl .</code> and look at all of them.</p>
+
+<p><strong>Step 6</strong></p>
+
+<p>Cool! Here are your git hooks.  You can see the moments in time you can hook into through git here. In our project, we played around with the <code>pre-commit.sample</code> hook, but you can browse through all of these, and figure out what the best tool is for what you want to do (or which sandbox interests you the most).</p>
+
+<p><strong>Step 7</strong></p>
+
+<p>Setting your Ruby environment is necessary if you want to be able to write this hook in Ruby. Put this at the top of your code: <code>#!/usr/bin/env ruby</code></p>
+
+<p><strong>Step 8</strong></p>
+
+<p>Write your hook. You can write stuff like <code>puts "hello there #{ENV["USER"]}"</code>to say your name, <code>puts Time.now</code> to put the current time, or things like <code>exit(1)</code> to make it exit the program. Play around. You can require gems (since they have global scope on your computer, this works), and do all sorts of Rubyesque/Railslike stuff, such as making calls to APIs, etc.</p>
+
+<p><strong>Step 9</strong></p>
+
+<p>Make your hook executable. This requires either one or two steps. The first is to take away the &ldquo;.sample&rdquo;&ldquo; at the end of your file name (e.g. &rdquo;&ldquo;pre-commit.sample&rdquo;). If you decide to do this by saving over your pre-commit.sample file, your file is already executable, so that&rsquo;s it. If you decide to just add a new file to hooks called something like pre-commit (or whatever moment you want to hook into), you&rsquo;ll need to run this in the command line <code>$ chmod ax YOURFILE</code> (e.g. <code>$ chmod ax pre-commit</code>). The point of this step is to make your computer able to execute the file.</p>
+
+<p><strong>Step 10</strong></p>
+
+<p>Test it out. <code>Cd</code> to the top of your directory, create a new file by doing <code>$ touch myfile.rb</code> or make changes to a file, run <code>git add .</code>, commit it by running <code>git commit -am 'my message'</code>, and you should see your hook executed when you do.</p>
+
+<br>
+
+
+<p>I think this is fun way to explore the concept of hooks, to think more deeply about git, and to conceptualize what you can do by hooking into those moments in git and linking them to APIs, other processes you are running, etc. Please let me know if you have any questions or thoughts in the comments!</p>
 </div>
 
 
