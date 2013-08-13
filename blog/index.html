@@ -398,85 +398,6 @@ $(document).ready(
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2013/07/25/why-didnt-my-octopress-work/">
-		
-			Why Didn&#8217;t My Octopress Work?</a>
-	</h2>
-	<div class="entry-content">
-		<p>My octopress blog works now, but it wasn&rsquo;t working for a while. I&rsquo;ve overheard from some of my classmates at Flatiron that they are experiencing this as well. Below &ndash; a short and sweet post about how I figured out what was wrong and how to fix it.</p>
-
-<p>On July 11, I tried to post a blog post and got an epic error when I tried to rake deploy. I wish I had it copied here somewhere but I am pretty sure I closed all terminal windows that had that error by now. I&rsquo;ve heard about logs, but I&rsquo;m not sure where these live so this will have to be a work of imagination on your part. It was a very long paragraph with many regular expression slashes that ended by saying &ldquo;regexp error&rdquo;. Definitely a little scary; I find those regular expression slashes a bit aggressive myself. Furthermore, there was no documenation or discussion online with this particular error, so that was weird.</p>
-
-<p>Interestingly, when I was presenting the blog post for July 11, my classmate Max (maxjacobson.github.io) was able to find my post through this link (<a href="https://github.com/ruthienachmany/ruthienachmany.github.io/blob/a401e7128313b5176b361ae67003ec935d8b05f6/source/_posts/2013-07-10-preparing-for-my-first-tech-talk.markdown">https://github.com/ruthienachmany/ruthienachmany.github.io/blob/a401e7128313b5176b361ae67003ec935d8b05f6/source/_posts/2013-07-10-preparing-for-my-first-tech-talk.markdown</a>) &ndash; or in other words, it was on my repo, but did not reploy correctly to my octopress site.</p>
-
-<p>Then I avoided the problem for a while.</p>
-
-<p>Then I was like, hm, I feel like expressing myself again, so I tried to write another blog post, hoping the error forgot about itself. No such luck. I sat with my TA Jon (<a href="http://jonathangrover.com">http://jonathangrover.com</a>) and compared our octopresses. The only difference we could discern was that his posts were saved in a branch called &lsquo;gh-pages&rsquo; while mine were in &lsquo;source&rsquo;. We looked into it, but determined that it was not the problem, both because in the octopress documentation, both are presented as approaches for posting blogs, and also because I had previously been able to deploy my posts.</p>
-
-<p>However, as we were speaking, I noticed that we were running different versions of Ruby. Interesting&hellip; I started to think back to July 11. That was the Thursday after the 4th of July weekend. The 4th of July weekend happened when we were just starting to learn Rails &ndash; we had a half hour lecture on Rails, and then were set loose into our vacation to read books/documentation, learn about Rails, and enjoy the 4th. I was super excited, followed by slightly dejected, as I struggled to understand the multiple controllers of Rails (see my Sinatra vs. Rails blog post and presentation for more detailed descriptions of my struggles and process of understanding).</p>
-
-<p>One of the big challenges was that Rails 4 came out right before we started learning Rails. We&rsquo;re focusing on Rails 3 right now in class versus jumping straight into 4, both because the documentation is much richer for Rails 3 right now, because once you learn one version of Rails I think it is much easier to jump into the next, and because Avi said so (for good reason &ndash; it&rsquo;s better to let someone else catch the bugs).</p>
-
-<p>Despite all this, I naturally downloaded Rails 4 by mistake, and have been kind of atoning ever since. I&rsquo;ve shambled through RVM, rewriting Gemfiles, and a variety of other potions for trying to make my Rails apps open in 3 vs 4.</p>
-
-<p>My TA Ashley provided a helpful way to specify versions:
-rvm use ruby-1.9.3-p429
-rvm gemset create rails3.2.13
-rvm <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#117;&#98;&#x79;&#45;&#49;&#x2e;&#x39;&#46;&#51;&#45;&#x70;&#52;&#x32;&#57;&#x40;&#114;&#x61;&#x69;&#108;&#x73;&#x33;&#46;&#50;&#46;&#x31;&#x33;">&#114;&#x75;&#98;&#x79;&#45;&#49;&#x2e;&#x39;&#46;&#51;&#x2d;&#x70;&#52;&#x32;&#57;&#x40;&#x72;&#x61;&#x69;&#x6c;&#x73;&#51;&#46;&#x32;&#46;&#x31;&#51;</a>
-gem install rails &mdash;version=3.2.13</p>
-
-<p>But I kind of prefer my classmate Kirin&rsquo;s (<a href="http://kirinm1.github.io/">http://kirinm1.github.io/</a>) approach, just for its simplicity:
-rails <em>3.2.13</em> new</p>
-
-<p>Anyways, reflecting upon all this, I realized that I may have changed the version of Ruby I was running by mistake, and perhaps this was affecting my octopress malfunction.</p>
-
-<p>I changed my version of Ruby back to 1.9.3 &ndash; and alas, it still didn&rsquo;t work. Frustrated, I shut down my terminal and left octopress alone for a day.</p>
-
-<p>Sometimes when you give someone a day to calm down, they become more reasonable, personable, and polite when you see them again, or take them to meet people. I was trying to show my friend Chris Lake (chhhris.github.io) my awful regular expression error yesterday. As I was demonstrating it, octopress asked me to bundle update RedCloth (<a href="https://github.com/jgarber/redcloth">https://github.com/jgarber/redcloth</a>), which is part of the Gemfile.</p>
-
-<p>From the gem&rsquo;s site:
-&ldquo;RedCloth is a module for using the Textile markup language in Ruby. Textile is a simple text format that can be converted to html, eliminating the need to use html directly to create documents, blogs, or web pages. Textile gives you readable text while you’re writing and beautiful text for your readers. If you need to break out into html, Textile allows you to do so easily.&rdquo;</p>
-
-<p>As perhaps you can anticipate by fact of reading this post, my blog now works.</p>
-
-<p>Lessons learned:</p>
-
-<ol>
-<li><p>Installing Rails 4 (and trying to drop down) may be giving you problems with your octopress &ndash; if experiencing issues, explore which version of Ruby you are running.</p></li>
-<li><p>Get intimate with RVM. Understanding how this works will save you errors with lots of slashes in the future.</p></li>
-<li><p>Share your errors with your peers. Sometimes they will help you, either by identifying what the error is not (e.g. Max helped me understand that it was NOT a problem with uploading to my repo; John helped me understand that it was NOT an error with my branch and the conventions of Octopress). Sometimes they will help you by identifying what the error is. Other times, it is just kind of like the experience of calling your dad over and showing him a problem with the sink or circuitbreaker or your phone &ndash; as soon as you call him over, the problem goes away. Persistence is key!</p></li>
-</ol>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-25T06:07:00-04:00" pubdate data-updated="true">Jul 25<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
 		<a href="/blog/2013/07/23/somanyresources/">
 		
 			So Many Resources&#8230;</a>
@@ -841,6 +762,84 @@ DataMapper is an Object-Relational-Mapper (ORM) for Ruby. It&rsquo;s  fast, thre
 
 
 <time datetime="2013-06-17T21:17:00-04:00" pubdate data-updated="true">Jun 17<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/06/16/hello-world/">
+		
+			Side Projects</a>
+	</h2>
+	<div class="entry-content">
+		<p>Today marks the first day of my third week as a developer. This weekend was very transformative for me in terms of my growth and learning as a programmer. Thursday night I dreamed about code. Friday night marked the first gathering of the Flatiron School Drinking Club. I also learned how to DJ from my teacher at Fridays After Flatiron &ndash; learning to learn and all! These past two weeks, I&rsquo;ve been so inspired to learn new things or re-learn things I used to know. Every day presents a new idea &ndash; Relearn Japanese! Start DJing! Make a film! Run really far for a long time! Origami cranes! Tomorrow we&rsquo;re learning how to tie knots. Saturday I studied with classmates and learned from one how to play a Scandinavian version of bocci ball called Kubb. Sunday I rewrote code over and over again until the sounds got in my head. Today I really noticed today how much more fluent I was in Ruby syntax than last week. Then I saw Sacha Greif&rsquo;s &ldquo;Side Projects&rdquo; presentation on SpeakerDeck.</p>
+
+<p>Greif makes awesome side projects. His presentation presents an argument for how and why.</p>
+
+<p>Why should you work on side projects?</p>
+
+<p>1) Build a product &ndash; learn how to bring an idea to execution and how to market it. Be your own CEO.
+2) Learn something new &ndash; try out a cool new tool or framework
+3) Get your name out there &ndash; can reach a lot of people &ndash; perhaps more than your regular work can</p>
+
+<p>What makes a good side project?</p>
+
+<p>1) Simple &ndash; be able to launch it in under 10 hours
+2) Specific &ndash; solving well-defined need for specific target helps keep scope manageable &ndash; which is good practice in life in general
+3) Special &ndash; have fun! stand out!</p>
+
+<p>Find time</p>
+
+<p>1) Scale down &ndash; if you can&rsquo;t increase time, decrease scope
+2) Compromise &ndash; sacrifice some exercise, lunch, or sleep for one week to find those ten hours
+3) Repurpose &ndash; take something you&rsquo;re doing anyway and make it your project</p>
+
+<p>Don&rsquo;t overthink, overcomplexify, tell a story</p>
+
+<p>I&rsquo;m so inspired by these mantras and I think that practicing good habits in small doses can reflect in positive ways on larger challenges and problem-solving activities I engage in on a daily basis. When I do Bikram yoga for an hour and a half, it&rsquo;s easier for me to run for 45 minutes. When I&rsquo;m hot in Bikram, I think about how hot it was to run in India. This goes on. Take your challenges and make them into tools. Build up habits in one field to another. Perhaps this is why this high-growth, high-learning last two weeks have inspired me to learn so many other things, and why so many of my learning and growth experiences have emerging as I problem solve in code. Writing code over and over again reminds me of writing poems I like over and over again to get the rhythm in my head.</p>
+
+<p>I think of one of my favorite lines (though I have a lot of favorite lines):</p>
+
+<p>More than once I’ve felt like a small bug with the brain of a man, standing on a leaf floating through the blood vessels and veins in my own body. As I navigate through a leg or into a body cavity, I can clearly see the faults and the strengths of my current convictions – little vignettes in continuous action, like the Pirates of the Caribbean ride at Disneyland, a haunted house carved into my organs and muscles. Anyhow, every day of my life when I draw another picture, I think maybe I’m trying to find something inside me that needs a new script. Like crashing your motorcycle and waking up and wondering why your foot is over there in the gutter. As I get older, I regret the mistakes of my life even deeper. And I feel the following things even more: Hooray for Happiness! Hooray for Life! Hooray for Everything!
+-Mark Mothersbaugh</p>
+
+<p>And another:</p>
+
+<p>‘If you opened people up, you would find landscapes; if you opened me up, you would find beaches. Many old people wish to tell their life. As an old filmmaker, with the enthusiasm and energy of my youth, I tried to find a style and a form to tell my memories, my encounters, the ups and downs of my life. I shot my film as a kaleidoscope, a collage, a fantasy.’ Agnès Varda</p>
+
+<p>My motto:</p>
+
+<p>&ldquo;It loved to happen&rdquo; -Marcus Aurelius</p>
+
+<p>This week:
+10 hours, 1 side project. I think it&rsquo;s going to be about Citibike. I just cloned so many Citibike repos&hellip; and perhaps it will inspire me to learn how to ride a bike. Practice being a beginner&hellip;</p>
+
+<p>More to come.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-16T23:28:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-08-13T07:33:33-04:00</updated>
+  <updated>2013-08-13T07:36:48-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -258,58 +258,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Why didn't my Octopress Work?]]></title>
-    <link href="http://ruthienachmany.github.io/blog/2013/07/25/why-didnt-my-octopress-work/"/>
-    <updated>2013-07-25T06:07:00-04:00</updated>
-    <id>http://ruthienachmany.github.io/blog/2013/07/25/why-didnt-my-octopress-work</id>
-    <content type="html"><![CDATA[<p>My octopress blog works now, but it wasn&rsquo;t working for a while. I&rsquo;ve overheard from some of my classmates at Flatiron that they are experiencing this as well. Below &ndash; a short and sweet post about how I figured out what was wrong and how to fix it.</p>
-
-<p>On July 11, I tried to post a blog post and got an epic error when I tried to rake deploy. I wish I had it copied here somewhere but I am pretty sure I closed all terminal windows that had that error by now. I&rsquo;ve heard about logs, but I&rsquo;m not sure where these live so this will have to be a work of imagination on your part. It was a very long paragraph with many regular expression slashes that ended by saying &ldquo;regexp error&rdquo;. Definitely a little scary; I find those regular expression slashes a bit aggressive myself. Furthermore, there was no documenation or discussion online with this particular error, so that was weird.</p>
-
-<p>Interestingly, when I was presenting the blog post for July 11, my classmate Max (maxjacobson.github.io) was able to find my post through this link (<a href="https://github.com/ruthienachmany/ruthienachmany.github.io/blob/a401e7128313b5176b361ae67003ec935d8b05f6/source/_posts/2013-07-10-preparing-for-my-first-tech-talk.markdown">https://github.com/ruthienachmany/ruthienachmany.github.io/blob/a401e7128313b5176b361ae67003ec935d8b05f6/source/_posts/2013-07-10-preparing-for-my-first-tech-talk.markdown</a>) &ndash; or in other words, it was on my repo, but did not reploy correctly to my octopress site.</p>
-
-<p>Then I avoided the problem for a while.</p>
-
-<p>Then I was like, hm, I feel like expressing myself again, so I tried to write another blog post, hoping the error forgot about itself. No such luck. I sat with my TA Jon (<a href="http://jonathangrover.com">http://jonathangrover.com</a>) and compared our octopresses. The only difference we could discern was that his posts were saved in a branch called &lsquo;gh-pages&rsquo; while mine were in &lsquo;source&rsquo;. We looked into it, but determined that it was not the problem, both because in the octopress documentation, both are presented as approaches for posting blogs, and also because I had previously been able to deploy my posts.</p>
-
-<p>However, as we were speaking, I noticed that we were running different versions of Ruby. Interesting&hellip; I started to think back to July 11. That was the Thursday after the 4th of July weekend. The 4th of July weekend happened when we were just starting to learn Rails &ndash; we had a half hour lecture on Rails, and then were set loose into our vacation to read books/documentation, learn about Rails, and enjoy the 4th. I was super excited, followed by slightly dejected, as I struggled to understand the multiple controllers of Rails (see my Sinatra vs. Rails blog post and presentation for more detailed descriptions of my struggles and process of understanding).</p>
-
-<p>One of the big challenges was that Rails 4 came out right before we started learning Rails. We&rsquo;re focusing on Rails 3 right now in class versus jumping straight into 4, both because the documentation is much richer for Rails 3 right now, because once you learn one version of Rails I think it is much easier to jump into the next, and because Avi said so (for good reason &ndash; it&rsquo;s better to let someone else catch the bugs).</p>
-
-<p>Despite all this, I naturally downloaded Rails 4 by mistake, and have been kind of atoning ever since. I&rsquo;ve shambled through RVM, rewriting Gemfiles, and a variety of other potions for trying to make my Rails apps open in 3 vs 4.</p>
-
-<p>My TA Ashley provided a helpful way to specify versions:
-rvm use ruby-1.9.3-p429
-rvm gemset create rails3.2.13
-rvm <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#117;&#98;&#x79;&#45;&#49;&#x2e;&#x39;&#46;&#51;&#45;&#x70;&#52;&#x32;&#57;&#x40;&#114;&#x61;&#x69;&#108;&#x73;&#x33;&#46;&#50;&#46;&#x31;&#x33;">&#114;&#x75;&#98;&#x79;&#45;&#49;&#x2e;&#x39;&#46;&#51;&#x2d;&#x70;&#52;&#x32;&#57;&#x40;&#x72;&#x61;&#x69;&#x6c;&#x73;&#51;&#46;&#x32;&#46;&#x31;&#51;</a>
-gem install rails &mdash;version=3.2.13</p>
-
-<p>But I kind of prefer my classmate Kirin&rsquo;s (<a href="http://kirinm1.github.io/">http://kirinm1.github.io/</a>) approach, just for its simplicity:
-rails <em>3.2.13</em> new</p>
-
-<p>Anyways, reflecting upon all this, I realized that I may have changed the version of Ruby I was running by mistake, and perhaps this was affecting my octopress malfunction.</p>
-
-<p>I changed my version of Ruby back to 1.9.3 &ndash; and alas, it still didn&rsquo;t work. Frustrated, I shut down my terminal and left octopress alone for a day.</p>
-
-<p>Sometimes when you give someone a day to calm down, they become more reasonable, personable, and polite when you see them again, or take them to meet people. I was trying to show my friend Chris Lake (chhhris.github.io) my awful regular expression error yesterday. As I was demonstrating it, octopress asked me to bundle update RedCloth (<a href="https://github.com/jgarber/redcloth">https://github.com/jgarber/redcloth</a>), which is part of the Gemfile.</p>
-
-<p>From the gem&rsquo;s site:
-&ldquo;RedCloth is a module for using the Textile markup language in Ruby. Textile is a simple text format that can be converted to html, eliminating the need to use html directly to create documents, blogs, or web pages. Textile gives you readable text while you’re writing and beautiful text for your readers. If you need to break out into html, Textile allows you to do so easily.&rdquo;</p>
-
-<p>As perhaps you can anticipate by fact of reading this post, my blog now works.</p>
-
-<p>Lessons learned:</p>
-
-<ol>
-<li><p>Installing Rails 4 (and trying to drop down) may be giving you problems with your octopress &ndash; if experiencing issues, explore which version of Ruby you are running.</p></li>
-<li><p>Get intimate with RVM. Understanding how this works will save you errors with lots of slashes in the future.</p></li>
-<li><p>Share your errors with your peers. Sometimes they will help you, either by identifying what the error is not (e.g. Max helped me understand that it was NOT a problem with uploading to my repo; John helped me understand that it was NOT an error with my branch and the conventions of Octopress). Sometimes they will help you by identifying what the error is. Other times, it is just kind of like the experience of calling your dad over and showing him a problem with the sink or circuitbreaker or your phone &ndash; as soon as you call him over, the problem goes away. Persistence is key!</p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[So Many Resources...]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/07/23/somanyresources/"/>
     <updated>2013-07-23T17:26:00-04:00</updated>
@@ -349,7 +297,7 @@ For me, the wealth of resources about Ruby and Rails is both incredibly exciting
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Slides from my Presentation]]></title>
+    <title type="html"><![CDATA[Slides From My Presentation]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/07/22/slides/"/>
     <updated>2013-07-22T18:04:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/07/22/slides</id>
@@ -370,7 +318,7 @@ For me, the wealth of resources about Ruby and Rails is both incredibly exciting
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Preparing for my first tech talk]]></title>
+    <title type="html"><![CDATA[Preparing For My First Tech Talk]]></title>
     <link href="http://ruthienachmany.github.io/blog/2013/07/10/preparing-for-my-first-tech-talk/"/>
     <updated>2013-07-10T20:43:00-04:00</updated>
     <id>http://ruthienachmany.github.io/blog/2013/07/10/preparing-for-my-first-tech-talk</id>
