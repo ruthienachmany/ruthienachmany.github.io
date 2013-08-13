@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-08-13T09:50:14-04:00</updated>
+  <updated>2013-08-13T09:50:59-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -188,7 +188,8 @@
 
 <p>This is the easy part. I make calls to the Twitter API (which I&rsquo;ve authenticated with using Omniauth elsewhere) using the <a href="https://github.com/sferik/twitter">Twitter gem</a> to get tweets, and meta-content about them. One thing you might note if you are new to scraping is how I&rsquo;ve set it up so that if a tweet has been scraped before, my program will recognize its unique id, and not scrape it each time. With high-volume scraping, this is pretty important.  And don&rsquo;t forget to <code>tweet_post.save!</code></p>
 
-<p>Last thing: remember that when running your server in development phase, you should also run the redis server and sidekiq as well as rails server. You can also check out your sidekiq activity and whether everything is working at the &lsquo;/sidekiq&rsquo; route after you set up the route in your routes.rb file like so <code>mount Sidekiq::Web, at:'/sidekiq'</code>.</p>
+<p><strong>Last thing</strong> <br>
+Remember that when running your server in development phase, you should also run the redis server and sidekiq as well as rails server. You can also check out your sidekiq activity and whether everything is working at the &lsquo;/sidekiq&rsquo; route after you set up the route in your routes.rb file like so <code>mount Sidekiq::Web, at:'/sidekiq'</code>.</p>
 
 <p><strong> The End </strong></p>
 
