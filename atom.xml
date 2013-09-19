@@ -4,7 +4,7 @@
   <title><![CDATA[Code as Collage]]></title>
   <link href="http://ruthienachmany.github.io/atom.xml" rel="self"/>
   <link href="http://ruthienachmany.github.io/"/>
-  <updated>2013-08-13T16:50:45-04:00</updated>
+  <updated>2013-09-19T09:09:17-04:00</updated>
   <id>http://ruthienachmany.github.io/</id>
   <author>
     <name><![CDATA[Ruthie Nachmany]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Open Sourcing Precautions]]></title>
+    <link href="http://ruthienachmany.github.io/blog/2013/09/19/open-sourcing-precautions/"/>
+    <updated>2013-09-19T00:24:00-04:00</updated>
+    <id>http://ruthienachmany.github.io/blog/2013/09/19/open-sourcing-precautions</id>
+    <content type="html"><![CDATA[<p><strong>Making Your First Open Source Project Public</strong></p>
+
+<p>Last week, I recently open-sourced <a href="http://teamline.io">Teamline</a>, my final group project for Flatiron. I&rsquo;d created many public repos beforehand on my own account, and contributed to open source by creating the OmniAuth strategy for Jawbone, but this was the biggest project I&rsquo;ve ever open-sourced. From that process, I learned about a few steps a beginner might have to take before open-sourcing his or her project. I&rsquo;ve distilled that process, plus a few other things I&rsquo;ve recently learned about open source and some thoughts I have on how to improve my project now that I&rsquo;ve made it open.</p>
+
+<p>Check out my repo <a href="https://github.com/flatiron-school/teamline-redux">here</a> btw.</p>
+
+<p><strong>Step 1: Create an <code>application.yml</code> file</strong></p>
+
+<p>This is a local file that lives in your .gitignore and thus is not pushed up to GitHub. This is the place where you keep your secret keys and tokens for different third-party applications you might be authenticating with. If you already have one, you can use that.</p>
+
+<p><strong>Step 2: Hide your secret token</strong></p>
+
+<p>Rails uses a secret token to allow you to verify the integrity of signed cookies. Thus, for security reasons, you probably don&rsquo;t want everyone to have the ability to know and use that token. It is found in <code>config/initializers/secret_token.rb</code>. If you&rsquo;ve already open-sourced your project without taking these precautions to hide your secret token, you&rsquo;ll probably want to <code>rake secret</code> to generate a new token. If you do that, you&rsquo;ll need to restart your server. If you haven&rsquo;t open-sourced your project yet, you can use your existing token, but you&rsquo;ll want to move it to your <code>application.yml</code> file, and reference it in your <code>secret_token.rb</code> file as an environmental variable (which has scope throughout the whole application &mdash;> look at how rake tasks and the <code>task: TASK_NAME =&gt; :environment do</code> line to see how rake tasks require the whole application environment in order to have scope throughout the app). Create a line in your <code>application.yml</code> file that is something like <code>APP_SECRET_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxxx"</code> with the x&rsquo;s being your secret token from the <code>secret_token.rb</code> file. In your <code>secret_token.rb</code> file, change the code to <code>App::Application.config.secret_token = ENV['APP_SECRET_TOKEN']</code>.</p>
+
+<p><strong>Step 3: Hide your database names</strong></p>
+
+<p>Exposing your database names opens you up to attack. Changing them from the default name Rails suggests will also help you heighten your security. Either way, you definitely don&rsquo;t want them out in the open. In your <code>config/database.yml</code> file, in the development, test, and production sections, change the line that starts with &ldquo;database&rdquo; to something like <code>database: &lt;%= ENV['APP_DEVELOPMENT_DATABASE'] %&gt;</code>, <code>database: &lt;%= ENV['APP_TEST_DATABASE'] %&gt;</code>, and <code>database: &lt;%= ENV['APP_PRODUCTION_DATABASE'] %&gt;</code>. I tried it without using erb, and it didn&rsquo;t work, so I recommend doing that, just to be safe. In your <code>application.yml</code> file, make environmental variables called <code>ENV['APP_DEVELOPMENT_DATABASE]</code>, <code>ENV['APP_TEST_DATABASE]</code>, and <code>ENV['APP_PRODUCTION_DATABASE]</code>.</p>
+
+<p><strong>Step 4: Hide your deploy user and server</strong></p>
+
+<p>Exposing your server username and IP address also opens you up to attacks &ndash; you can imagine someone taking that username@IP and trying out passwords to ssh into your server. Better that didn&rsquo;t happen. In your <code>config/deploy.rb</code> file, change the <code>set user</code> line  to <code>set :user, ENV['APP_USER']</code> and the three <code>role: web</code>, <code>role: app</code>, and <code>role: db</code> lines to <code>role :web, ENV['APP_SERVER']</code>, <code>role :app, ENV['APP_SERVER']</code>, <code>role :db, ENV['APP_SERVER']</code>, instead of listing out your actual server IP address in those lines.</p>
+
+<p><strong>Step 5: Git fixes</strong></p>
+
+<p>Okay, push those changes up to master &ndash; maybe do rails s and test it first, for any mistakes you might have made or some bugs that emerge. Now, you&rsquo;ll want to clear your history of any reference to your actual database, server, or secret token. Copy those files you&rsquo;ve just created somewhere else, outside of your app. Then you&rsquo;ll want to run <code>git filter-branch --tree-filter 'rm -f config/deploy.rb' HEAD</code> to remove that file, <code>git filter-branch --tree-filter 'rm -f config/database.yml' HEAD</code>, and <code>git filter-branch --tree-filter 'rm -f config/initializers/secret_token.rb' HEAD</code> to remove all traces of that file in your branch. You may need to force this if it doesn&rsquo;t work automatically. You&rsquo;ll then want to commit that change and push it up. You may also need to force push or force merge those changes. It&rsquo;s what you want to do though. Then your branch has no traces of that file. You&rsquo;ll want to do this for every branch you keep in your final project (you could also consider squashing vestigial branches where all chanegs are merged). Finally, you&rsquo;ll want to   create those files in your app once again, and paste the files that you&rsquo;ve copied elsewhere.</p>
+
+<p><strong>Step 6: Open source!</strong></p>
+
+<p>This is an exciting moment. Open source your project for the world to use! I recently went to an interview, and one of the people I met with suggested to me that the best way to get acquainted with an open-source project would be to run its test suite. That way, you literally get to see how it &ldquo;should&rdquo; work. In terms of thinking about my next steps now that I&rsquo;ve open-sourced Teamline, making my test suite really robust is one of the big ones. Another big thing I&rsquo;ve thought about in making my app more robust is changing its scope to be a multi-tenant application, so that the &ldquo;teamlines&rdquo; (i.e. stories of a team over time) of multiple teams can be created. Improving my documentation and identifying and fixing bugs is another one. I&rsquo;ve also got the <a href="http://www.youtube.com/watch?v=DC-pQPq0acs">refactoring from good to great</a> video on my YouTube queue, so going through my code and refactoring it will be important as well. I&rsquo;m sure for your project, you also have some steps you&rsquo;d like to take to improve it, and open-sourcing it (safely!) is a great motivation for that. Plus people can fork you, and that&rsquo;s always exciting.</p>
+
+<p>Let me know if you have any feedback/improvements/tips/success stories to add!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up Sidekiq with Cron Jobs]]></title>

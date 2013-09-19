@@ -100,6 +100,72 @@ $(document).ready(
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2013/09/19/open-sourcing-precautions/">
+		
+			Open Sourcing Precautions</a>
+	</h2>
+	<div class="entry-content">
+		<p><strong>Making Your First Open Source Project Public</strong></p>
+
+<p>Last week, I recently open-sourced <a href="http://teamline.io">Teamline</a>, my final group project for Flatiron. I&rsquo;d created many public repos beforehand on my own account, and contributed to open source by creating the OmniAuth strategy for Jawbone, but this was the biggest project I&rsquo;ve ever open-sourced. From that process, I learned about a few steps a beginner might have to take before open-sourcing his or her project. I&rsquo;ve distilled that process, plus a few other things I&rsquo;ve recently learned about open source and some thoughts I have on how to improve my project now that I&rsquo;ve made it open.</p>
+
+<p>Check out my repo <a href="https://github.com/flatiron-school/teamline-redux">here</a> btw.</p>
+
+<p><strong>Step 1: Create an <code>application.yml</code> file</strong></p>
+
+<p>This is a local file that lives in your .gitignore and thus is not pushed up to GitHub. This is the place where you keep your secret keys and tokens for different third-party applications you might be authenticating with. If you already have one, you can use that.</p>
+
+<p><strong>Step 2: Hide your secret token</strong></p>
+
+<p>Rails uses a secret token to allow you to verify the integrity of signed cookies. Thus, for security reasons, you probably don&rsquo;t want everyone to have the ability to know and use that token. It is found in <code>config/initializers/secret_token.rb</code>. If you&rsquo;ve already open-sourced your project without taking these precautions to hide your secret token, you&rsquo;ll probably want to <code>rake secret</code> to generate a new token. If you do that, you&rsquo;ll need to restart your server. If you haven&rsquo;t open-sourced your project yet, you can use your existing token, but you&rsquo;ll want to move it to your <code>application.yml</code> file, and reference it in your <code>secret_token.rb</code> file as an environmental variable (which has scope throughout the whole application &mdash;> look at how rake tasks and the <code>task: TASK_NAME =&gt; :environment do</code> line to see how rake tasks require the whole application environment in order to have scope throughout the app). Create a line in your <code>application.yml</code> file that is something like <code>APP_SECRET_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxxx"</code> with the x&rsquo;s being your secret token from the <code>secret_token.rb</code> file. In your <code>secret_token.rb</code> file, change the code to <code>App::Application.config.secret_token = ENV['APP_SECRET_TOKEN']</code>.</p>
+
+<p><strong>Step 3: Hide your database names</strong></p>
+
+<p>Exposing your database names opens you up to attack. Changing them from the default name Rails suggests will also help you heighten your security. Either way, you definitely don&rsquo;t want them out in the open. In your <code>config/database.yml</code> file, in the development, test, and production sections, change the line that starts with &ldquo;database&rdquo; to something like <code>database: &lt;%= ENV['APP_DEVELOPMENT_DATABASE'] %&gt;</code>, <code>database: &lt;%= ENV['APP_TEST_DATABASE'] %&gt;</code>, and <code>database: &lt;%= ENV['APP_PRODUCTION_DATABASE'] %&gt;</code>. I tried it without using erb, and it didn&rsquo;t work, so I recommend doing that, just to be safe. In your <code>application.yml</code> file, make environmental variables called <code>ENV['APP_DEVELOPMENT_DATABASE]</code>, <code>ENV['APP_TEST_DATABASE]</code>, and <code>ENV['APP_PRODUCTION_DATABASE]</code>.</p>
+
+<p><strong>Step 4: Hide your deploy user and server</strong></p>
+
+<p>Exposing your server username and IP address also opens you up to attacks &ndash; you can imagine someone taking that username@IP and trying out passwords to ssh into your server. Better that didn&rsquo;t happen. In your <code>config/deploy.rb</code> file, change the <code>set user</code> line  to <code>set :user, ENV['APP_USER']</code> and the three <code>role: web</code>, <code>role: app</code>, and <code>role: db</code> lines to <code>role :web, ENV['APP_SERVER']</code>, <code>role :app, ENV['APP_SERVER']</code>, <code>role :db, ENV['APP_SERVER']</code>, instead of listing out your actual server IP address in those lines.</p>
+
+<p><strong>Step 5: Git fixes</strong></p>
+
+<p>Okay, push those changes up to master &ndash; maybe do rails s and test it first, for any mistakes you might have made or some bugs that emerge. Now, you&rsquo;ll want to clear your history of any reference to your actual database, server, or secret token. Copy those files you&rsquo;ve just created somewhere else, outside of your app. Then you&rsquo;ll want to run <code>git filter-branch --tree-filter 'rm -f config/deploy.rb' HEAD</code> to remove that file, <code>git filter-branch --tree-filter 'rm -f config/database.yml' HEAD</code>, and <code>git filter-branch --tree-filter 'rm -f config/initializers/secret_token.rb' HEAD</code> to remove all traces of that file in your branch. You may need to force this if it doesn&rsquo;t work automatically. You&rsquo;ll then want to commit that change and push it up. You may also need to force push or force merge those changes. It&rsquo;s what you want to do though. Then your branch has no traces of that file. You&rsquo;ll want to do this for every branch you keep in your final project (you could also consider squashing vestigial branches where all chanegs are merged). Finally, you&rsquo;ll want to   create those files in your app once again, and paste the files that you&rsquo;ve copied elsewhere.</p>
+
+<p><strong>Step 6: Open source!</strong></p>
+
+<p>This is an exciting moment. Open source your project for the world to use! I recently went to an interview, and one of the people I met with suggested to me that the best way to get acquainted with an open-source project would be to run its test suite. That way, you literally get to see how it &ldquo;should&rdquo; work. In terms of thinking about my next steps now that I&rsquo;ve open-sourced Teamline, making my test suite really robust is one of the big ones. Another big thing I&rsquo;ve thought about in making my app more robust is changing its scope to be a multi-tenant application, so that the &ldquo;teamlines&rdquo; (i.e. stories of a team over time) of multiple teams can be created. Improving my documentation and identifying and fixing bugs is another one. I&rsquo;ve also got the <a href="http://www.youtube.com/watch?v=DC-pQPq0acs">refactoring from good to great</a> video on my YouTube queue, so going through my code and refactoring it will be important as well. I&rsquo;m sure for your project, you also have some steps you&rsquo;d like to take to improve it, and open-sourcing it (safely!) is a great motivation for that. Plus people can fork you, and that&rsquo;s always exciting.</p>
+
+<p>Let me know if you have any feedback/improvements/tips/success stories to add!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-19T00:24:00-04:00" pubdate data-updated="true">Sep 19<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2013/08/10/sidekiq-redis-cron-jobs/">
 		
 			Setting Up Sidekiq With Cron Jobs</a>
@@ -765,84 +831,6 @@ DataMapper is an Object-Relational-Mapper (ORM) for Ruby. It&rsquo;s  fast, thre
 
 
 <time datetime="2013-06-17T21:17:00-04:00" pubdate data-updated="true">Jun 17<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/06/16/hello-world/">
-		
-			Side Projects</a>
-	</h2>
-	<div class="entry-content">
-		<p>Today marks the first day of my third week as a developer. This weekend was very transformative for me in terms of my growth and learning as a programmer. Thursday night I dreamed about code. Friday night marked the first gathering of the Flatiron School Drinking Club. I also learned how to DJ from my teacher at Fridays After Flatiron &ndash; learning to learn and all! These past two weeks, I&rsquo;ve been so inspired to learn new things or re-learn things I used to know. Every day presents a new idea &ndash; Relearn Japanese! Start DJing! Make a film! Run really far for a long time! Origami cranes! Tomorrow we&rsquo;re learning how to tie knots. Saturday I studied with classmates and learned from one how to play a Scandinavian version of bocci ball called Kubb. Sunday I rewrote code over and over again until the sounds got in my head. Today I really noticed today how much more fluent I was in Ruby syntax than last week. Then I saw Sacha Greif&rsquo;s &ldquo;Side Projects&rdquo; presentation on SpeakerDeck.</p>
-
-<p>Greif makes awesome side projects. His presentation presents an argument for how and why.</p>
-
-<p>Why should you work on side projects?</p>
-
-<p>1) Build a product &ndash; learn how to bring an idea to execution and how to market it. Be your own CEO.
-2) Learn something new &ndash; try out a cool new tool or framework
-3) Get your name out there &ndash; can reach a lot of people &ndash; perhaps more than your regular work can</p>
-
-<p>What makes a good side project?</p>
-
-<p>1) Simple &ndash; be able to launch it in under 10 hours
-2) Specific &ndash; solving well-defined need for specific target helps keep scope manageable &ndash; which is good practice in life in general
-3) Special &ndash; have fun! stand out!</p>
-
-<p>Find time</p>
-
-<p>1) Scale down &ndash; if you can&rsquo;t increase time, decrease scope
-2) Compromise &ndash; sacrifice some exercise, lunch, or sleep for one week to find those ten hours
-3) Repurpose &ndash; take something you&rsquo;re doing anyway and make it your project</p>
-
-<p>Don&rsquo;t overthink, overcomplexify, tell a story</p>
-
-<p>I&rsquo;m so inspired by these mantras and I think that practicing good habits in small doses can reflect in positive ways on larger challenges and problem-solving activities I engage in on a daily basis. When I do Bikram yoga for an hour and a half, it&rsquo;s easier for me to run for 45 minutes. When I&rsquo;m hot in Bikram, I think about how hot it was to run in India. This goes on. Take your challenges and make them into tools. Build up habits in one field to another. Perhaps this is why this high-growth, high-learning last two weeks have inspired me to learn so many other things, and why so many of my learning and growth experiences have emerging as I problem solve in code. Writing code over and over again reminds me of writing poems I like over and over again to get the rhythm in my head.</p>
-
-<p>I think of one of my favorite lines (though I have a lot of favorite lines):</p>
-
-<p>More than once I’ve felt like a small bug with the brain of a man, standing on a leaf floating through the blood vessels and veins in my own body. As I navigate through a leg or into a body cavity, I can clearly see the faults and the strengths of my current convictions – little vignettes in continuous action, like the Pirates of the Caribbean ride at Disneyland, a haunted house carved into my organs and muscles. Anyhow, every day of my life when I draw another picture, I think maybe I’m trying to find something inside me that needs a new script. Like crashing your motorcycle and waking up and wondering why your foot is over there in the gutter. As I get older, I regret the mistakes of my life even deeper. And I feel the following things even more: Hooray for Happiness! Hooray for Life! Hooray for Everything!
--Mark Mothersbaugh</p>
-
-<p>And another:</p>
-
-<p>‘If you opened people up, you would find landscapes; if you opened me up, you would find beaches. Many old people wish to tell their life. As an old filmmaker, with the enthusiasm and energy of my youth, I tried to find a style and a form to tell my memories, my encounters, the ups and downs of my life. I shot my film as a kaleidoscope, a collage, a fantasy.’ Agnès Varda</p>
-
-<p>My motto:</p>
-
-<p>&ldquo;It loved to happen&rdquo; -Marcus Aurelius</p>
-
-<p>This week:
-10 hours, 1 side project. I think it&rsquo;s going to be about Citibike. I just cloned so many Citibike repos&hellip; and perhaps it will inspire me to learn how to ride a bike. Practice being a beginner&hellip;</p>
-
-<p>More to come.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-16T23:28:00-04:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 </div>
